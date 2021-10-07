@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
-
 
 def primeiro():
     a=input("Quem começa a jogar, CPU ou Jogador?")
