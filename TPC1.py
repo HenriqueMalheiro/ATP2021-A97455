@@ -1,43 +1,44 @@
 # -*- coding: utf-8 -*-
+import random
 
+def menu():
+    a = int(input("1-Jogador ou 2-Computador?"))
+    escolher(a)
 
-def primeiro():
-    a=input("Quem começa a jogar, CPU ou Jogador?")
-    if a=="Jogador":
-        Jogador()
-    else:
-        CPU()
-    
-
-def Jogador():
-    total=21
-    while total>1:
-        b=input("Escolha o valor a tirar:")
-        c=5-int(b)
-        print("A CPU tira",c)
-        total=total-5
-        print("Ficam",total,"fósforos")
-    print("A CPU ganhou o jogo")
-        
-
-def CPU():
-    total=21
-    while total>1:
-        print("A CPU tira 1 fósforo")
-        d=input("Escolha o valor a tirar:")
-        total=total-1-int(d)
-        print("Ficam",total,"fósforos")
-        if int(d)+1!=5:
-            print("A CPU tira",4-int(d))
-            total=total-(4-int(d))
-            while total>1:
-                b=input("Escolha o valor a tirar:")
-                c=5-int(b)
-                print("A CPU tira",c)
-                total=total-5
-                print("Ficam",total,"fósforos")
-            print("A CPU ganhou o jogo")
-        elif total==1:
-            print("Parabéns, ganhou o jogo!")
-    
-primeiro()
+def escolher(a):
+    if a == 1:
+        inicio = 21
+        while inicio>1:
+                valor1 = int(input("Insira um valor: "))
+                valor2 = 5 - valor1
+                inicio = inicio - 5
+                print("O computador tira",valor2)
+                print ("Ficam",inicio,"fosforos")
+                if inicio == 1:
+                    print("Perdeu o jogo")
+    elif a == 2:
+        inicio=21
+        while inicio>1:
+            valor2=random.randrange(1,4,1)
+            print("O computador tira",valor2)
+            inicio=inicio-valor2
+            print("Ficam",inicio,"fosforos")
+            valor1 = int(input('Insira um valor: '))
+            inicio = inicio - valor1
+            if valor1+valor2!=5:
+                c=5-valor1-valor2
+                print("O computador tira",c)
+                inicio=inicio-c
+                print("Ficam",inicio,"fosforos")
+                while inicio>1:
+                    valor1 = int(input("Insira um valor: "))
+                    valor2 = 5 - valor1
+                    inicio = inicio -valor1-valor2
+                    print("O computador tira",valor2)
+                    print("Ficam",inicio,"fosforos")
+                    if inicio == 1:
+                        print("Perdeu o jogo")
+            elif inicio==1:
+                print("Ganhou o jogo")
+                
+menu()
